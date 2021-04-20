@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
@@ -25,6 +26,7 @@ public class RobotContainer {
   /* Motor Controllers */
   CANSparkMax shooterMotor;
   Shooter shooterSubsystem; 
+  public static DoubleSolenoid shooterGate;
  
 
   // The robot's subsystems and commands are defined here...
@@ -38,7 +40,10 @@ public class RobotContainer {
     configureButtonBindings();
 
     shooterMotor = new CANSparkMax(Constants.SHOOTER_MOTOR_ID, MotorType.kBrushless);
-    shooterSubsystem = new Shooter(shooterMotor);
+    shooterGate = new DoubleSolenoid(Constants.SHOOTER_GATE_UP, Constants.SHOOTER_GATE_DOWN); 
+    shooterSubsystem = new Shooter(shooterMotor, shooterGate);
+
+    
   }
 
   /**

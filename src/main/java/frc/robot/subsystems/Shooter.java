@@ -6,16 +6,23 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
+
+import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.kForward;
+import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.kReverse;
 
 public class Shooter extends SubsystemBase {
   
   CANSparkMax m_shooterMotor; 
-  
+  private final DoubleSolenoid m_shooterGate;
+
   /** Creates a new Shooter. */
-  public Shooter(CANSparkMax shooterMotor) {
+  public Shooter(CANSparkMax shooterMotor, DoubleSolenoid shooterGate) {
     m_shooterMotor = shooterMotor;
+    m_shooterGate = shooterGate;
   }
 
   @Override
@@ -29,5 +36,13 @@ public class Shooter extends SubsystemBase {
 
   public void shooterOff() {
     m_shooterMotor.set(0.0);
+  }
+
+  public void gateUp() {
+    m_shooterGate.set(kForward);
+  }
+
+  public void gateDown() {
+    m_shooterGate.set(kReverse);
   }
 }
