@@ -16,6 +16,9 @@ package frc.robot;
  */
 public final class Constants {
     public static final int SHOOTER_MOTOR_ID = 10;
-
     public static final double SHOOTER_SPEED = 0.7;
+
+    public static final int SHOOTER_GATE_UP = 2;
+    public static final int SHOOTER_GATE_DOWN = 3;
+    //Found these numbers on the other code, need to know how to get it.
 }
